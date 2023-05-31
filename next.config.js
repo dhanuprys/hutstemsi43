@@ -6,7 +6,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'raw.githubusercontent.com',
         port: '',
-        pathname: '/dhanuprys/simi/main/public/**',
+        pathname: '/dhanuprys/hutstemsi43/main/public/**',
       },
     ],
   },

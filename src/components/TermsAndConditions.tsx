@@ -9,72 +9,85 @@ const database = [
   {
     name: 'Lomba Dance (Persahabatan) Antar SMA/SMK Se-Kab. Buleleng',
     banner: '/lomba/dance.jpg',
+    description: '',
     slug: 'lomba-dance',
   },
   {
     name: 'Latihan Bersama Pickleball (Persahabatan) Antar Guru Se-Buleleng',
     banner: '/lomba/pickleball.jpg',
+    description: '',
     slug: 'lomba-dance-2',
   },
   {
     name: 'Lomba Memasak Antar Guru SMK Negeri 3 Singaraja',
     banner: '/lomba/cooking.jpg',
+    description: '',
     slug: 'lomba-dance-2',
   },
   {
     name: 'Lomba Penjor Antar Jurusan SMK Negeri 3 Singaraja',
     banner: '/lomba/penjor.jpg',
+    description: '',
     slug: 'lomba-dance-2',
   },
   {
     name: 'Lomba Karaoke Antar SMP Se-Kab. Buleleng',
     banner: '/lomba/karaoke.jpg',
+    description: '',
     slug: 'lomba-dance-2',
   },
   {
     name: 'Lomba Futsal Antar Jurusan SMK Negeri 3 Singaraja',
     banner: '/lomba/futsal.jpg',
+    description: '',
     slug: 'lomba-dance-2',
   },
   {
     name: 'Lomba Mobile Legends Antar Jurusan SMK Negeri 3 Singaraja',
     banner: '/lomba/ml.jpg',
+    description: '',
     slug: 'lomba-dance-2',
   },
 
   {
     name: 'Lomba Tarik Tambang Antar Jurusan SMK Negeri 3 Singaraja',
     banner: '/lomba/tariktambang.jpg',
+    description: '',
     slug: 'lomba-dance-2',
   },
   {
     name: 'Lomba Gerak Jalan Kocak dan Yel Antar Jurusan SMK Negeri 3 Singaraja',
     banner: '/lomba/gerakjalan.jpg',
+    description: '',
     slug: 'lomba-dance-2',
   },
   {
     name: 'Lomba Pentas Seni Kreasi Antar Jurusan SMK Negeri 3 Singaraja',
     banner: '/event.jpg',
+    description: '',
     slug: 'lomba-dance-2',
   },
   {
     name: 'Lomba Kreativitas Karya Wirausaha Jurusan SMK Negeri 3 Singaraja',
     banner: '/event.jpg',
+    description: '',
     slug: 'lomba-dance-2',
   },
   {
     name: 'Lomba Expo Jurusan SMK Negeri 3 Singaraja',
     banner: '/event.jpg',
+    description: '',
     slug: 'lomba-dance-2',
   },
   {
     name: 'Puncak Acara Perayaan HUT SMK',
     banner: '/event.jpg',
+    description: '',
     slug: 'lomba-dance-2',
   },
 ];
 
-function LombaCard({ name, slug, banner }: { name: string, slug: string, banner: string }) {
+function LombaCard({ name, slug, banner, description }: { name: string, slug: string, banner: string, description: string }) {
   const [ dropdownOpen, setDropdownOpen ] = useState(false);
 
   return (
@@ -85,11 +98,11 @@ function LombaCard({ name, slug, banner }: { name: string, slug: string, banner:
       </div>
       <div className={styles.information} style={{ display: dropdownOpen ? 'flex' : 'none' }}>
         <div className={styles.banner}>
-          <Image src={banner} fill={true} alt={name} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43/main/public${banner}`} alt={name} />
         </div>
         <div className={styles.description}>
-          permainan tradisional yang berasal dari blabla dengan tujuan untuk blabala
-          karena blabla bla oleh bala
+          { description === '' || description === null ? 'Deskripsi tidak disertakan.' : description }
           <button className={styles.downloadButton}>Download S&K</button>
         </div>
       </div>
