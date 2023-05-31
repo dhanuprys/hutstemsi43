@@ -1,0 +1,247 @@
+.main {
+  
+}
+
+.landing {
+  display: flex;
+  min-height: 100vh;
+  /* background: rgb(144,160,191); */
+  /* background: linear-gradient(156deg, rgba(175,184,203,1) 0%, rgba(255,255,255,1) 100%); */
+
+  background-image: url(/background-large.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* background: linear-gradient(156deg, rgba(69,99,201,1) 0%, rgba(175,184,203,1) 100%); */
+}
+
+.landing .goDown {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 95;
+}
+
+.landing .goDown .circle {
+  width: 40px;
+  height: 40px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 255, 0.5);
+  color: white;
+  opacity: 0.8;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  animation: floating 3s ease-in forwards infinite;
+}
+
+.landing .information {
+  flex: 55%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding-inline: 6rem;
+  z-index: 80;
+  /* background-image: url(/background.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center 30%; */
+}
+
+.landing .information .title {
+  font-family: 'Source Sans Pro';
+  font-weight: bold;
+  padding: 0;
+  font-size: 5rem;
+  margin: 0;
+  padding-top: 3rem;
+  /* color: rgba(0,180,216,1); */
+  text-shadow: 10px 10px 20px rgba(0,180,216,0.6);
+  animation: colorup 15s ease forwards infinite;
+}
+
+.landing .information .highlight {
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.landing .information .highlight li {
+  padding: 0.4rem;
+  border-radius: 4px;
+  color: white;
+}
+
+@keyframes colorup {
+  0% {
+    text-shadow: 10px 10px 20px rgba(0,180,216,0.5);
+  }
+
+  40% {
+    text-shadow: 4px 2px 26px rgba(67,170,139,0.5);
+  }
+
+  75% {
+    text-shadow: 4px 2px 26px rgba(199,125,255,0.5);
+  }
+
+  90% {
+    text-shadow: 4px 2px 26px rgba(255,221,0,0.6);
+  }
+
+  100% {
+    text-shadow: 10px 10px 20px rgba(0,180,216,0.5);
+  }
+}
+
+.landing .information .description {
+  color: grey;
+  padding-right: 4rem;
+}
+
+.landing .information .contactButton {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  border: 0;
+  background: #55a630;
+  border-radius: 5px;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  letter-spacing: 1px;
+  transition: 500ms;
+}
+
+.landing .information .contactButton:hover {
+  transition: 500ms;
+  transform: scale(1.1);
+}
+
+.contactButton img {
+  filter: invert(100%);
+}
+
+.landing .pamfletText {
+  display: none;
+  text-align: center;
+}
+
+.landing .pamfletText > h4 {
+  margin: 0;
+}
+
+.landing .banner {
+  flex: 45%;
+  flex-grow: 1;
+  /* background: blue; */
+  position: relative;
+  display: flex;
+  padding: 6rem;
+}
+
+.landing .banner .bannerCardContainer {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.landing .banner .bannerCardContainer img {
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(5px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(5px);
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .landing .information,
+  .landing .banner {
+    flex: 1;
+  }
+
+  .landing .pamfletText {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .landing {
+    flex-direction: column;
+    gap: 2rem;
+    background-image: none;
+  }
+
+  .landing .goDown {
+    bottom: 0.5rem;
+  }
+
+  .landing .information {
+    padding: 2rem;
+    text-align: center;
+    min-height: 100vh;
+    background-image: url(/background-large.png);
+    background-repeat: no-repeat;
+    background-position: 20% 30%;
+    background-size: cover;
+    /* background-image: url(/background.png);
+    background-size: cover;
+    background-repeat: no-repeat; */
+  }
+
+  .landing .information .title {
+    font-size: 3rem;
+    padding: 0;
+    padding-bottom: 2rem;
+  }
+
+  .landing .information .highlight {
+    font-size: 10px;
+    justify-content: center;
+  }
+
+  .landing .information .description {
+    padding: 0;
+    font-size: 12px;
+  }
+
+  .landing .information .buttonContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .landing .information .buttonContainer .contactButton {
+    font-size: 12px;
+    padding: 0.5rem 1.4rem;
+  }
+
+  .landing .banner {
+    /* min-height: 100vh; */
+    padding: 2rem;
+    padding-top: 1rem;
+    position: relative;
+  }
+
+  .landing .banner .bannerCardContainer {
+    height: 50vh;
+  }
+}
