@@ -49,6 +49,7 @@
 .card .outside .title {
   padding: 0;
   margin: 0;
+  font-weight: normal;
 }
 
 .card .information {
@@ -78,7 +79,8 @@
 }
 
 .card .information .downloadButton {
-  display: block;
+  display: flex;
+  text-decoration: none;
   width: 100%;
   border: 0;
   background: blue;
@@ -88,13 +90,26 @@
   margin-top: 1rem;
   font-size: 12px;
   font-weight: bold;
+  justify-content: center;
+  align-items: center;
 }
 
 .preview {
   flex: 60%;
   border: 1px solid grey;
   border-radius: 5px;
-  min-height: 50vh;
+  min-height: 90vh;
+  max-height: 90vh;
+}
+
+@media screen and (min-width: 1025px) {
+  .cardContainer {
+    min-height: 90vh;
+    max-height: 90vh;
+    overflow: auto;
+    padding: 2rem;
+    padding-left: 0.5rem;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -112,6 +127,9 @@
 }
 
 @media screen and (max-width: 512px) {
+  .tac > h1 {
+    font-size: medium;
+  }
   .card .information {
     flex-direction: column;
   }

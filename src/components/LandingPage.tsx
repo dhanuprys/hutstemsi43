@@ -5,6 +5,7 @@ import styles from './LandingPage.module.css';
 import { useEffect, useState } from 'react';
 import Sponsorship from './Sponsorship';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import Link from 'next/link';
 
 export default function LandingPage() {
   const pamphletCount = 2;
@@ -74,7 +75,7 @@ export default function LandingPage() {
               Jadikan HUT-43 menjadi euforia bagi kita bersama
             </p>
             <div className={styles.buttonContainer}>
-              <button className={styles.contactButton}><Image src="/whatsapp.png" width="25" height="25" alt="icon" />HUBUNGI PANITIA</button>
+              <Link href="/kontak-panitia" className={styles.contactButton}><Image src="/whatsapp.png" width="25" height="25" alt="icon" />HUBUNGI PANITIA</Link>
             </div>
           </div>
         </section>
