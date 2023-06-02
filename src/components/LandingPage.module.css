@@ -144,70 +144,31 @@
   /* background: blue; */
   position: relative;
   display: flex;
+  justify-content: flex-end;
   padding: 6rem;
 }
 
 .landing .banner .bannerCardContainer {
-  height: 100%;
+  height: 550px;
   width: 100%;
+  max-width: 500px;
   position: relative;
   border-radius: 8px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
+.slideItem > div {
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  width: 100%;
+  height: 550px;
+  border-radius: 5px;
+}
+
 .landing .banner .bannerCardContainer img {
   object-fit: cover;
   border-radius: 8px;
-}
-
-.landing .banner .bannerSlider {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 200;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding-inline: 1rem;
-}
-
-.landing .banner .bannerSlider .slideButton {
-  transition: 100ms;
-  background: white;
-  border-radius: 5px;
-  width: 35px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-
-.landing .banner .bannerSlider .slideButton:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-  transition: 100ms;
-}
-
-.landing .banner .bannerCounter {
-  position: absolute;
-  left: 0;
-  bottom: 1rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 0.3rem;
-}
-
-.landing .banner .bannerCounter .counterPoint {
-  width: 10px;
-  height: 10px;
-  background: grey;
-  border-radius: 50%;
-}
-
-.landing .banner .bannerCounter .counterPoint.counterActive {
-  background: white;
 }
 
 @keyframes floating {
@@ -228,6 +189,10 @@
   .landing .information,
   .landing .banner {
     flex: 1;
+  }
+
+  .landing .banner {
+    justify-content: center;
   }
 
   .landing .pamfletText {
@@ -295,9 +260,10 @@
   .landing .banner .bannerCardContainer {
     height: 50vh;
   }
+}
 
-  .landing .banner .bannerSlider .slideButton {
-    width: 30px;
-    height: 30px;
+@media screen and (max-width: 728px) {
+  .slideItem > div {
+    height: 400px;
   }
 }
