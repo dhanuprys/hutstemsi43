@@ -43,8 +43,12 @@ function LombaCard({ name, slug, banner, description, rulesFile, changePreview, 
           <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets${banner}`} alt={name} />
         </div>
         <div className={styles.description}>
-          { description === '' || description === null ? 'Deskripsi tidak disertakan.' : description }
-          <Link download={true} href={rulesFile} className={styles.downloadButton}><DownloadIcon fontSize="small" /> Download S&K</Link>
+          { description === '' || description === null ? <p>Deskripsi tidak disertakan.</p> : description }
+          { 
+            rulesFile === '' || rulesFile === null 
+            ? <p>S&K tidak tersedia</p> 
+            : <Link download={true} prefetch={false} href={`${rulesFile}`} className={styles.downloadButton}><DownloadIcon fontSize="small" /> Download S&K</Link>
+          }
           {/* <Link href={`/sk/${slug}`} className={styles.previewButton}><DownloadIcon fontSize="small" /> Lihat S&K</Link> */}
         </div>
       </div>
@@ -100,7 +104,7 @@ export default function TermsAndCondition() {
               ? <PreviewNotAvailable /> 
               : <>
                 <h5><Link href={previewURL}>{previewURL}</Link></h5>
-                <iframe src={previewURL} style={{ width: '100%', height: '100%' }}>preview tidak tersedia</iframe>
+                <object data={`${previewURL}`} type="application/pdf" style={{ width: '100%', height: '100%' }}>preview tidak tersedia</object>
               </>
             }
           </aside>
