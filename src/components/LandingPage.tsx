@@ -71,18 +71,18 @@ export default function LandingPage() {
     });
   }, []);
 
-  useEffect(() => {
-    // console.log('register');
+  // useEffect(() => {
+  //   // console.log('register');
 
-    const intervalId = setTimeout(() => {
-      slideForward();
-    }, 10000);
+  //   const intervalId = setTimeout(() => {
+  //     slideForward();
+  //   }, 10000);
 
-    return () => {
-      clearTimeout(intervalId);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pamhpletDatabase, pamphletIndex]);
+  //   return () => {
+  //     clearTimeout(intervalId);
+  //   }
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [pamhpletDatabase, pamphletIndex]);
 
   return (
     <main className={styles.main}>
