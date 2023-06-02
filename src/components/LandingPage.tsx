@@ -81,6 +81,7 @@ export default function LandingPage() {
     return () => {
       clearTimeout(intervalId);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pamhpletDatabase, pamphletIndex]);
 
   return (
