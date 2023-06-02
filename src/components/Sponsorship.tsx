@@ -17,6 +17,7 @@ function SponsorItem({ banner, name }: Sponsor) {
 
 export default function Sponsorship() {
   const [ sponsors, setSponsors ] = useState([]);
+  const [ gridColumn, setGridColumn ] = useState(0);
 
   useEffect(() => {
     // setLoading(true);
@@ -28,7 +29,13 @@ export default function Sponsorship() {
 
       throw new Error('Error');
     }).then(sponsorResponse => {
-      setSponsors(sponsorResponse)
+      setSponsors(sponsorResponse);
+      
+      if (sponsorResponse.length >= 5) {
+        setGridColumn(5);
+      } else {
+        setGridColumn(sponsorResponse.length);
+      }
     }).catch(() => {
       
     }).finally(() => {
@@ -40,7 +47,7 @@ export default function Sponsorship() {
   return (
     <article className={styles.sponsors}>
         <h4>SPONSOR</h4>
-        <div className={styles.sponsorsContainer}>
+        <div className={styles.sponsorsContainer} style={{ gridTemplateColumns: 'auto '.repeat(gridColumn) }}>
           {
             sponsors.map((sponsor: Sponsor) => {
               return <SponsorItem key={sponsor.name} {...sponsor} />

@@ -1,6 +1,9 @@
+import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
-import TermsAndCondition from '@/components/TermsAndConditions';
+// import TermsAndCondition from '@/components/TermsAndConditions';
 import { Metadata } from 'next';
+
+const TermsAndCondition = dynamic(() => import('@/components/TermsAndConditions'));
 
 export const metadata: Metadata = {
   title: 'HUT STEMSI 43 | EUFORIA 43',

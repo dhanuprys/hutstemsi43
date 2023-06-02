@@ -76,7 +76,7 @@ export default function LandingPage() {
 
     const intervalId = setTimeout(() => {
       slideForward();
-    }, 5000);
+    }, 10000);
 
     return () => {
       clearTimeout(intervalId);
