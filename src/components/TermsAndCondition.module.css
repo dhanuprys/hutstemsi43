@@ -94,12 +94,32 @@
   align-items: center;
 }
 
+.card .information .previewButton {
+  display: flex;
+  text-decoration: none;
+  width: 100%;
+  border: 0;
+  background: green;
+  border-radius: 5px;
+  padding: 0.5rem;
+  color: white;
+  margin-top: 1rem;
+  font-size: 12px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+}
+
 .preview {
   flex: 60%;
-  border: 1px solid grey;
-  border-radius: 5px;
+  /* border: 1px solid grey; */
+  /* border-radius: 5px; */
   min-height: 90vh;
   max-height: 90vh;
+}
+
+.preview > iframe {
+  border: 5px;
 }
 
 @media screen and (min-width: 1025px) {
@@ -110,11 +130,19 @@
     padding: 2rem;
     padding-left: 0.5rem;
   }
+
+  .card .information .previewButton {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1024px) {
   .tac {
     padding: 2rem;
+  }
+
+  .card .information .downloadButton {
+    display: none;
   }
 
   .card .title {

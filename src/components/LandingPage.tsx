@@ -1,16 +1,38 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import styles from './LandingPage.module.css';
 import { useEffect, useState } from 'react';
-import Sponsorship from './Sponsorship';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Link from 'next/link';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+
+const Sponsorship = dynamic(() => import('./Sponsorship'));
 
 export default function LandingPage() {
-  const pamphletCount = 2;
-  const [pamphletIndex, setPamphletIndex] = useState(0);
-  const [showArrow, setShowArrow] = useState(true);
+  const [ pamhpletLoading, setPamhpletLoading ] = useState(true);
+  const [ pamhpletDatabase, setPamphletDatabase ] = useState<any>([]);
+  const [ pamphletCount, setPamphletCount ] = useState(0);
+  const [ pamphletIndex, setPamphletIndex ] = useState(0);
+  const [ showArrow, setShowArrow ] = useState(true);
+
+  const slideBack = () => {
+    if (pamphletIndex <= 0) {
+      return setPamphletIndex(pamphletCount-1);
+    }
+
+    setPamphletIndex(pamphletIndex-1);
+  };
+
+  const slideForward = () => {
+    if (pamphletIndex >= pamphletCount-1) {
+      return setPamphletIndex(0);
+    }
+
+    setPamphletIndex(pamphletIndex+1);
+  };
 
   useEffect(() => {
     function scrolly() {
@@ -29,25 +51,37 @@ export default function LandingPage() {
   });
 
   useEffect(() => {
-    let counter = setInterval(() => {
-      // console.log('INT');
-      // if (pamphletIndex >= pamphletCount-1) {
-      //   setPamphletIndex(0);
-      //   return;
-      // }
+    setPamhpletLoading(true);
 
-      // setPamphletIndex(pamphletIndex+1);
+    fetch('https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/pamhplets.json').then(response => {
+      if (response.status === 200) {
+        return response.json();
+      }
 
-      // return () => {
-      //   clearInterval(counter);
-      // };  
-    }, 4000);
+      throw new Error('Error');
+    }).then(pamhplets => {
+      setPamphletDatabase(pamhplets);
+      setPamphletCount(pamhplets.length);
 
-    // return () => {
-    //   clearInterval(counter);
-    // }
-  });
+      setPamhpletLoading(false);
+    }).catch(() => {
+      
+    }).finally(() => {
+      // setLoading(false);
+    });
+  }, []);
 
+  useEffect(() => {
+    console.log('register');
+
+    const intervalId = setTimeout(() => {
+      slideForward();
+    }, 5000);
+
+    return () => {
+      clearTimeout(intervalId);
+    }
+  }, [pamhpletDatabase, pamphletIndex]);
 
   return (
     <main className={styles.main}>
@@ -84,7 +118,15 @@ export default function LandingPage() {
         </div>
         <section className={styles.banner}>
           <div className={styles.bannerCardContainer}>
-            <Image src={`/pamphlet/${String(pamphletIndex)}.jpg`} fill={true} alt="" />
+            <div className={styles.bannerSlider}>
+              <div className={styles.slideButton} onClick={slideBack}><KeyboardArrowLeftIcon /></div>
+              <div className={styles.slideButton} onClick={slideForward}><KeyboardArrowRightIcon /></div>
+            </div>
+            {
+              pamhpletLoading ? 'Loading...'
+                /* eslint-disable-next-line @next/next/no-img-element */
+                : <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets${pamhpletDatabase[pamphletIndex].banner}`} style={{ width: '100%', height: '100%' }} alt={pamhpletDatabase[pamphletIndex].name} />
+            }
           </div>
         </section>
       </article>

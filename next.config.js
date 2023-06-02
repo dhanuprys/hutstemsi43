@@ -9,7 +9,7 @@ const nextConfig = {
         pathname: '/dhanuprys/hutstemsi43-metadata/main/public/**',
       },
     ],
-  },
-}
+  }
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

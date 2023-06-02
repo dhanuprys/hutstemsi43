@@ -160,6 +160,28 @@
   border-radius: 8px;
 }
 
+.landing .banner .bannerSlider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 200;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding-inline: 1rem;
+}
+
+.landing .banner .bannerSlider .slideButton {
+  background: white;
+  border-radius: 5px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
 @keyframes floating {
   0% {
     transform: translateY(5px);
@@ -244,5 +266,10 @@
 
   .landing .banner .bannerCardContainer {
     height: 50vh;
+  }
+
+  .landing .banner .bannerSlider .slideButton {
+    width: 30px;
+    height: 30px;
   }
 }

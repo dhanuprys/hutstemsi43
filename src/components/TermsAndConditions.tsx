@@ -15,13 +15,20 @@ type Lomba = {
   description: string
 }
 
-function LombaCard({ name, slug, banner, description, rulesFile, changePreview }: Lomba & { changePreview: any }) {
-  const [ dropdownOpen, setDropdownOpen ] = useState(false);
-
+function LombaCard({ name, slug, banner, description, rulesFile, changePreview, setDropdown, dropdown }: Lomba & { changePreview: any, setDropdown: any, dropdown: boolean }) {
   const handleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
+    if (dropdown) {
+      // Menutup dropdown
+      setDropdown('');
+      changePreview('');
+    } else {
+      // Membuka dropdown
+      changePreview(rulesFile);
+      setDropdown(slug);
+    }
+    // setDropdownOpen(!dropdownOpen);
 
-    changePreview(rulesFile);
+    // changePreview(rulesFile);
   }
 
   return (
@@ -30,17 +37,24 @@ function LombaCard({ name, slug, banner, description, rulesFile, changePreview }
         <div className={styles.titleContainer}><h5 className={styles.title}>{name}</h5></div>
         <div><KeyboardArrowDownIcon /></div>
       </div>
-      <div className={styles.information} style={{ display: dropdownOpen ? 'flex' : 'none' }}>
+      <div className={styles.information} style={{ display: dropdown ? 'flex' : 'none' }}>
         <div className={styles.banner}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets/${banner}`} alt={name} />
+          <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets${banner}`} alt={name} />
         </div>
         <div className={styles.description}>
           { description === '' || description === null ? 'Deskripsi tidak disertakan.' : description }
           <Link href={rulesFile} className={styles.downloadButton}><DownloadIcon fontSize="small" /> Download S&K</Link>
+          <Link href={`/sk/${slug}`} className={styles.previewButton}><DownloadIcon fontSize="small" /> Lihat S&K</Link>
         </div>
       </div>
     </section>
+  );
+}
+
+function PreviewNotAvailable() {
+  return (
+    <h1>Preview tidak tersedia</h1>
   );
 }
 
@@ -48,6 +62,7 @@ export default function TermsAndCondition() {
   const [ database, setDatabase ] = useState([]);
   const [ isLoading, setLoading ] = useState(false);
   const [ previewURL, setPreviewURL ] = useState('');
+  const [ activeDropdown, setActiveDropdown ] = useState();
 
   useEffect(() => {
     setLoading(true);
@@ -74,13 +89,20 @@ export default function TermsAndCondition() {
         <div className={styles.divider}>
           <div className={styles.cardContainer}>
           {
-            isLoading ? null : database.map((lomba: Lomba) => {
-              return <LombaCard key={lomba.name} {...lomba} changePreview={setPreviewURL} />
+            isLoading ? 'Loading...' : database.map((lomba: Lomba) => {
+              return <LombaCard key={lomba.name} {...lomba} dropdown={activeDropdown === lomba.slug} setDropdown={setActiveDropdown} changePreview={setPreviewURL} />
             })
           }
           </div>
           <aside className={styles.preview}>
-            <iframe src={previewURL} style={{ width: '100%', height: '100%' }}></iframe>
+            {
+              previewURL === '' || previewURL === null
+              ? <PreviewNotAvailable /> 
+              : <>
+                <h5><Link href={previewURL}>{previewURL}</Link></h5>
+                <iframe src={previewURL} style={{ width: '100%', height: '100%' }}>preview tidak tersedia</iframe>
+              </>
+            }
           </aside>
         </div>
       </article>
