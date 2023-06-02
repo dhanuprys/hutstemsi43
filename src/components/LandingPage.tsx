@@ -36,10 +36,10 @@ export default function LandingPage() {
 
   useEffect(() => {
     function scrolly() {
-      if (window.scrollY > 30) {
-        setShowArrow(false);
+      if (window.scrollY > 10) {
+        if (showArrow) setShowArrow(false);
       } else {
-        setShowArrow(true);
+        if (!showArrow) setShowArrow(true);
       }
     }
 
@@ -72,7 +72,7 @@ export default function LandingPage() {
   }, []);
 
   useEffect(() => {
-    console.log('register');
+    // console.log('register');
 
     const intervalId = setTimeout(() => {
       slideForward();
@@ -122,6 +122,13 @@ export default function LandingPage() {
             <div className={styles.bannerSlider}>
               <div className={styles.slideButton} onClick={slideBack}><KeyboardArrowLeftIcon /></div>
               <div className={styles.slideButton} onClick={slideForward}><KeyboardArrowRightIcon /></div>
+            </div>
+            <div className={styles.bannerCounter}>
+              {
+                pamhpletDatabase.map((_: any, index: number) => {
+                  return <span key={index} className={`${styles.counterPoint} ${index === pamphletIndex ? styles.counterActive : ''}`}></span>
+                })
+              }
             </div>
             {
               pamhpletLoading ? 'Loading...'
