@@ -111,7 +111,7 @@ export default function LandingPage() {
             {
               pamhpletLoading
                 ? 'Loading...'
-                : <Slide prevArrow={<></>} nextArrow={<></>}>
+                : <Slide prevArrow={<></>} nextArrow={<></>} duration={3000}>
                   {
                     pamhpletDatabase.map((pamphlet: any) => {
                       return (

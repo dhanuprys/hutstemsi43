@@ -141,9 +141,9 @@
     padding: 2rem;
   }
 
-  .card .information .downloadButton {
+  /* .card .information .downloadButton {
     display: none;
-  }
+  } */
 
   .card .title {
     font-size: 12px;

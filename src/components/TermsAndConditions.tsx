@@ -44,8 +44,8 @@ function LombaCard({ name, slug, banner, description, rulesFile, changePreview, 
         </div>
         <div className={styles.description}>
           { description === '' || description === null ? 'Deskripsi tidak disertakan.' : description }
-          <Link href={rulesFile} className={styles.downloadButton}><DownloadIcon fontSize="small" /> Download S&K</Link>
-          <Link href={`/sk/${slug}`} className={styles.previewButton}><DownloadIcon fontSize="small" /> Lihat S&K</Link>
+          <Link download={true} href={rulesFile} className={styles.downloadButton}><DownloadIcon fontSize="small" /> Download S&K</Link>
+          {/* <Link href={`/sk/${slug}`} className={styles.previewButton}><DownloadIcon fontSize="small" /> Lihat S&K</Link> */}
         </div>
       </div>
     </section>
