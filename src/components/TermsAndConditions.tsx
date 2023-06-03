@@ -32,7 +32,7 @@ function LombaCard({ name, slug, banner, description, rulesFile, changePreview, 
   }
 
   return (
-    <section className={styles.card}>
+    <section className={`${styles.card} ${dropdown ? styles.cardActive : ''} `}>
       <div className={styles.outside} onClick={handleDropdown}>
         <div className={styles.titleContainer}><h5 className={styles.title}>{name}</h5></div>
         <div><KeyboardArrowDownIcon /></div>

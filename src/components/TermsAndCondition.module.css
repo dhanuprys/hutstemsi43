@@ -25,6 +25,16 @@
   gap: 1rem;
 }
 
+.card.cardActive {
+  background: rgb(236, 232, 232);
+}
+
+.card:hover {
+  background: rgb(236, 232, 232);
+  transition: 200ms;
+  cursor: pointer;
+}
+
 .card .outside {
   display: flex;
   gap: 0.5rem;
