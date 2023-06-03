@@ -2,6 +2,7 @@
 
 import styles from './TermsAndCondition.module.css';
 import Image from 'next/image';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -35,7 +36,13 @@ function LombaCard({ name, slug, banner, description, rulesFile, changePreview, 
     <section className={`${styles.card} ${dropdown ? styles.cardActive : ''} `}>
       <div className={styles.outside} onClick={handleDropdown}>
         <div className={styles.titleContainer}><h5 className={styles.title}>{name}</h5></div>
-        <div><KeyboardArrowDownIcon /></div>
+        <div>
+          {
+            dropdown
+            ? <KeyboardArrowUpIcon />
+            : <KeyboardArrowDownIcon />
+          }
+        </div>
       </div>
       <div className={styles.information} style={{ display: dropdown ? 'flex' : 'none' }}>
         <div className={styles.banner}>
