@@ -47,7 +47,7 @@ function LombaCard({ name, slug, banner, description, rulesFile, changePreview, 
           { 
             rulesFile === '' || rulesFile === null 
             ? <p>S&K tidak tersedia</p> 
-            : <Link download={true} prefetch={false} href={`${rulesFile}`} className={styles.downloadButton}><DownloadIcon fontSize="small" /> Download S&K</Link>
+            : <Link download={true} target="_blank" prefetch={false} href={`${rulesFile}`} className={styles.downloadButton}><DownloadIcon fontSize="small" /> Download S&K</Link>
           }
           {/* <Link href={`/sk/${slug}`} className={styles.previewButton}><DownloadIcon fontSize="small" /> Lihat S&K</Link> */}
         </div>

@@ -1,0 +1,70 @@
+.contact {
+  padding: 2rem 6rem;
+  margin-top: 5rem;
+}
+
+.contactContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  margin-top: 2rem;
+}
+
+.contactCard {
+  padding: 2rem;
+  /* background: blue; */
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  text-decoration: none;
+  color: black;
+}
+
+.contactCard .logo {
+  width: 64px;
+  height: 64px;
+  position: relative;
+}
+
+.contactCard .information {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.contactCard .information .name {
+  font-size: large;
+}
+
+.contactCard .information .number {
+  font-size: small;
+  color: grey;
+}
+
+@media screen and (max-width: 1024px) {
+  .contact {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  .contactContainer {
+    row-gap: 1rem;
+  }
+
+  .contactCard {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .contactCard .logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .contactCard .information .name {
+    font-size: medium;
+  }
+}
