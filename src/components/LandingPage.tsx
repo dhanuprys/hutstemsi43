@@ -116,7 +116,7 @@ export default function LandingPage() {
                     pamhpletDatabase.map((pamphlet: any) => {
                       return (
                         <div key={pamphlet.name} className={styles.slideItem}>
-                          <div style={{ 'backgroundImage': `url(https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets${pamphlet.banner})`, 'backgroundSize': 'cover', backgroundPosition: 'center' }}></div>
+                          <div style={{ 'backgroundImage': `url(https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets${pamphlet.banner})`, 'backgroundSize': 'contain', backgroundPosition: 'center' }}></div>
                         </div>
                       );
                     })

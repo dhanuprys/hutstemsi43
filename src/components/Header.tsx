@@ -25,7 +25,7 @@ export default function Header({ current = 'home' }: { current: string }) {
     <header className={`${styles.header} ${navigationOpen ? styles.active : null}`}>
         <div className={styles.mobile}>
           <div className={styles.logo}>
-            <Image src="/logo.png" width="64" height="64" alt="logo" />
+            <Image src="/logo.png" width="68" height="68" alt="logo" />
           </div>
           <div className={styles.hamburger}>
             <div onClick={() => setNavigationOpen(!navigationOpen)}>
