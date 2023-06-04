@@ -71,12 +71,6 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -50 }}
-      transition={{ duration: 0.5 }}
-    >
     <main className={styles.main}>
       <article className={styles.landing}>
         {
@@ -90,7 +84,12 @@ export default function LandingPage() {
         }
         <section className={styles.information}>
           <div>
-            <h2 className={styles.title}>Meriahkan HUT STEMSI yang ke-43</h2>
+            <motion.h2
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.5 }}
+              className={styles.title}>Meriahkan HUT STEMSI yang ke-43</motion.h2>
             <strong>EUFORIA 43</strong>
             <ul className={styles.highlight}>
               <li style={{ background: 'rgba(229, 152, 155, 1)' }}>Profil Pelajar Pancasila</li>
@@ -135,6 +134,5 @@ export default function LandingPage() {
       </article>
       <Sponsorship />
     </main>
-    </motion.div>
   );
 }

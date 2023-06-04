@@ -34,8 +34,8 @@ function LombaCard({ name, slug, banner, description, rulesFile, changePreview, 
   }
 
   return (
-    <motion.section initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: 0 }}
+    <motion.section initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
     exit={{ opacity: 0, y: -50 }}
     transition={{ duration: 0.5 }} className={`${styles.card} ${dropdown ? styles.cardActive : ''} `}>
       <div className={styles.outside} onClick={handleDropdown}>

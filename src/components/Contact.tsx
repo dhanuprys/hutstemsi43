@@ -7,10 +7,10 @@ import { motion } from 'framer-motion';
 
 function ContactCard({ name, display, destination }: { name: string, display: string, destination: string }) {
   return (
-    <motion.a initial={{ opacity: 0, y: 50 }}
+    <motion.a initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -50 }}
-    transition={{ duration: 0.5 }} target="_blank" href={destination} className={styles.contactCard}>
+    transition={{ duration: 0.2 }} target="_blank" href={destination} className={styles.contactCard}>
       <div className={styles.logo}>
         <Image src="/whatsapp-logo.png" fill={true} alt="logo" />
       </div>
