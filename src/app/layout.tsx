@@ -3,14 +3,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Transition from '@/components/effect/Transition';
-import { motion } from 'framer-motion';
-
-const inter = Inter({ subsets: ['latin'] });
-
-type Props = {
-  children: string | JSX.Element | JSX.Element[] | (() => JSX.Element)
-}
+const inter = Inter({ subsets: ['latin'] });\
 
 export const metadata = {
   title: 'Create Next App',
@@ -19,7 +12,9 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-}: DetailedHTMLProps<HTMLAttributes<HTMLBodyElement>, HTMLBodyElement>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="id">
       <body className={inter.className}>
