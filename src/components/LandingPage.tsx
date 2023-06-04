@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import styles from './LandingPage.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Link from 'next/link';
 import { Slide } from 'react-slideshow-image';
@@ -14,25 +14,10 @@ const Sponsorship = dynamic(() => import('./Sponsorship'));
 export default function LandingPage() {
   const [pamhpletLoading, setPamhpletLoading] = useState(true);
   const [pamhpletDatabase, setPamphletDatabase] = useState<any>([]);
-  const [pamphletCount, setPamphletCount] = useState(0);
-  const [pamphletIndex, setPamphletIndex] = useState(0);
   const [showArrow, setShowArrow] = useState(true);
+  const [cardHeight, setCardHeight] = useState(550);
 
-  const slideBack = () => {
-    if (pamphletIndex <= 0) {
-      return setPamphletIndex(pamphletCount - 1);
-    }
-
-    setPamphletIndex(pamphletIndex - 1);
-  };
-
-  const slideForward = () => {
-    if (pamphletIndex >= pamphletCount - 1) {
-      return setPamphletIndex(0);
-    }
-
-    setPamphletIndex(pamphletIndex + 1);
-  };
+  const bannerRef = useRef();
 
   useEffect(() => {
     function scrolly() {
@@ -61,7 +46,6 @@ export default function LandingPage() {
       throw new Error('Error');
     }).then(pamhplets => {
       setPamphletDatabase(pamhplets);
-      setPamphletCount(pamhplets.length);
 
       setPamhpletLoading(false);
     }).catch(() => {
@@ -70,6 +54,20 @@ export default function LandingPage() {
       // setLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    setCardHeight(bannerRef?.current!.clientHeight);
+    
+    const resizeEvent = () => {
+      setCardHeight(bannerRef?.current!.clientHeight);
+    }
+
+    window.addEventListener('resize', resizeEvent);
+
+    return () => {
+      window.removeEventListener('resize', resizeEvent);
+    };
+  });
 
   return (
     <main className={styles.main}>
@@ -105,18 +103,20 @@ export default function LandingPage() {
           <h4>PAMFLET</h4>
         </div>
         <section className={styles.banner}>
-          <div className={styles.bannerCardContainer}>
+          <div className={styles.bannerCardContainer} ref={bannerRef}>
             {/* <div style={{ width: '100%', height: '100%', background: 'blue' }}></div> */}
 
             {
               pamhpletLoading
                 ? 'Loading...'
-                : <Slide prevArrow={<></>} nextArrow={<></>} duration={3000} canSwipe={false}>
+                : <Slide prevArrow={<></>} nextArrow={<></>} duration={5000} canSwipe={false}>
                   {
                     pamhpletDatabase.map((pamphlet: any) => {
                       return (
                         <div key={pamphlet.name} className={styles.slideItem}>
-                          <div style={{ 'backgroundImage': `url(https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets${pamphlet.banner})`, 'backgroundSize': 'contain', backgroundPosition: 'center' }}></div>
+                          {/* <div style={{ 'backgroundImage': `url(https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets${pamphlet.banner})`, 'backgroundSize': 'contain', backgroundPosition: 'center' }}></div> */}
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets${pamphlet.banner}`} alt="hello" style={{ maxHeight: cardHeight + 'px' }} />
                         </div>
                       );
                     })
