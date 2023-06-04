@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import styles from './LandingPage.module.css';
-import { useEffect, useRef, useState } from 'react';
+import { LegacyRef, useEffect, useRef, useState } from 'react';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Link from 'next/link';
 import { Slide } from 'react-slideshow-image';
@@ -17,7 +17,7 @@ export default function LandingPage() {
   const [showArrow, setShowArrow] = useState(true);
   const [cardHeight, setCardHeight] = useState(550);
 
-  const bannerRef = useRef();
+  const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function scrolly() {
@@ -57,7 +57,7 @@ export default function LandingPage() {
 
   useEffect(() => {
     setCardHeight(bannerRef?.current!.clientHeight);
-    
+
     const resizeEvent = () => {
       setCardHeight(bannerRef?.current!.clientHeight);
     }
@@ -67,7 +67,7 @@ export default function LandingPage() {
     return () => {
       window.removeEventListener('resize', resizeEvent);
     };
-  });
+  }, []);
 
   return (
     <main className={styles.main}>
