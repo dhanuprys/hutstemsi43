@@ -269,11 +269,17 @@
 
 @media screen and (max-width: 728px) {
 
-  /* .landing .banner .bannerCardContainer {
-    height: 400px;
-  } */
+  .landing .banner .bannerCardContainer {
+    height: 70vh;
+  }
 
   .slideItem > div {
     height: 400px;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  .landing .banner .bannerCardContainer {
+    height: 50vh;
   }
 }
