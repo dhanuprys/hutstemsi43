@@ -7,6 +7,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import DownloadIcon from '@mui/icons-material/Download';
+import { motion } from 'framer-motion';
 
 type Lomba = {
   name: string,
@@ -33,7 +34,10 @@ function LombaCard({ name, slug, banner, description, rulesFile, changePreview, 
   }
 
   return (
-    <section className={`${styles.card} ${dropdown ? styles.cardActive : ''} `}>
+    <motion.section initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -50 }}
+    transition={{ duration: 0.5 }} className={`${styles.card} ${dropdown ? styles.cardActive : ''} `}>
       <div className={styles.outside} onClick={handleDropdown}>
         <div className={styles.titleContainer}><h5 className={styles.title}>{name}</h5></div>
         <div>
@@ -59,7 +63,7 @@ function LombaCard({ name, slug, banner, description, rulesFile, changePreview, 
           {/* <Link href={`/sk/${slug}`} className={styles.previewButton}><DownloadIcon fontSize="small" /> Lihat S&K</Link> */}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

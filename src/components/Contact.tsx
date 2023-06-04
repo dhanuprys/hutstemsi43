@@ -1,10 +1,16 @@
+'use client';
+
 import Image from 'next/image';
 import styles from './Contact.module.css';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 function ContactCard({ name, display, destination }: { name: string, display: string, destination: string }) {
   return (
-    <Link target="_blank" href={destination} className={styles.contactCard}>
+    <motion.a initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -50 }}
+    transition={{ duration: 0.5 }} target="_blank" href={destination} className={styles.contactCard}>
       <div className={styles.logo}>
         <Image src="/whatsapp-logo.png" fill={true} alt="logo" />
       </div>
@@ -12,7 +18,7 @@ function ContactCard({ name, display, destination }: { name: string, display: st
         <strong className={styles.name}>{name}</strong>
         <span className={styles.number}>{display}</span>
       </div>
-    </Link>
+    </motion.a>
   );
 }
 

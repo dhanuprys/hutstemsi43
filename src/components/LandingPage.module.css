@@ -191,6 +191,16 @@
 }
 
 @media screen and (max-width: 1280px) {
+  .landing {
+    flex-direction: column;
+    gap: 2rem;
+    background-image: none;
+  }
+
+  .landing .goDown {
+    bottom: 0.5rem;
+  }
+  
   .landing .information,
   .landing .banner {
     flex: 1;
@@ -206,16 +216,6 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .landing {
-    flex-direction: column;
-    gap: 2rem;
-    background-image: none;
-  }
-
-  .landing .goDown {
-    bottom: 0.5rem;
-  }
-
   .landing .information {
     padding: 2rem;
     text-align: center;

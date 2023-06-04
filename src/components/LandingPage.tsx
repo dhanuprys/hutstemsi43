@@ -8,6 +8,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Link from 'next/link';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
+import { motion } from 'framer-motion';
 
 const Sponsorship = dynamic(() => import('./Sponsorship'));
 
@@ -70,6 +71,12 @@ export default function LandingPage() {
   }, []);
 
   return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 0.5 }}
+    >
     <main className={styles.main}>
       <article className={styles.landing}>
         {
@@ -128,5 +135,6 @@ export default function LandingPage() {
       </article>
       <Sponsorship />
     </main>
+    </motion.div>
   );
 }
