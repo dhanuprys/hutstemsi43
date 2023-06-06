@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 import LandingPage from '../components/LandingPage';
-import styles from './page.module.css';
+// import styles from './page.module.css';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -12,15 +12,15 @@ export const metadata: Metadata = {
     siteName: 'HUT STEMSI 43',
     images: [
       {
-        url: 'https://hutstemsi43.vercel.app/logo.png',
+        url: 'https://hutstemsi43.vercel.app/logo-hut.png',
         width: 800,
         height: 600,
       },
       {
-        url: 'https://hutstemsi43.vercel.app/logo.png',
+        url: 'https://hutstemsi43.vercel.app/logo-hut.png',
         width: 1800,
         height: 1600,
-        alt: 'My custom alt',
+        alt: 'HUT STEMSI 43',
       },
     ],
     locale: 'id_ID',
