@@ -85,8 +85,8 @@ export default function LandingPage() {
         <section className={styles.information}>
           <div>
             <motion.h2
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.5 }}
               className={styles.title}>Meriahkan HUT STEMSI yang ke-43</motion.h2>
