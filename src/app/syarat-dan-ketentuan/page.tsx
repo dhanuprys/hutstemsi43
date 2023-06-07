@@ -9,20 +9,20 @@ export const metadata: Metadata = {
   title: 'HUT STEMSI 43 | EUFORIA 43',
   openGraph: {
     title: 'HUT STEMSI 43 | EUFORIA 43',
-    description: 'Berikut merupakan syarat & ketentuan lomba yang diselenggarakan',
-    url: 'https://hutstemsi43.vercel.app/syarat-dan-ketentuan',
+    description: 'Berikut merupakan syarat & ketentuan lomba yang disediakan',
+    url: 'https://hutstemsi43.vercel.app',
     siteName: 'HUT STEMSI 43',
     images: [
       {
-        url: 'https://hutstemsi43.vercel.app/logo.png',
+        url: 'https://hutstemsi43.vercel.app/logo-hut.png',
         width: 800,
         height: 600,
       },
       {
-        url: 'https://hutstemsi43.vercel.app/logo.png',
+        url: 'https://hutstemsi43.vercel.app/logo-hut.png',
         width: 1800,
         height: 1600,
-        alt: 'My custom alt',
+        alt: 'HUT STEMSI 43',
       },
     ],
     locale: 'id_ID',
