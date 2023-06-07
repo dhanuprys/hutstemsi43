@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import ContactPerson from '@/components/Contact';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'HUT STEMSI 43 | EUFORIA 43',
