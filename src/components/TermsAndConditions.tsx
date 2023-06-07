@@ -54,7 +54,7 @@ function LombaCard({ name, slug, banner, description, rulesFile, changePreview, 
           <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets${banner}`} alt={name} />
         </div>
         <div className={styles.description}>
-          { description === '' || description === null ? <p>Deskripsi tidak disertakan.</p> : description }
+          { description === '' || description === null ? null : description }
           { 
             rulesFile === '' || rulesFile === null 
             ? <p>S&K tidak tersedia</p> 
