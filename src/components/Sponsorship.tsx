@@ -17,14 +17,17 @@ function SponsorItem({ banner, name }: Sponsor) {
   );
 }
 
-export default function Sponsorship() {
+export default function Sponsorship({ media = false }: { media?: boolean }) {
   const [sponsors, setSponsors] = useState([]);
   const [gridColumn, setGridColumn] = useState(0);
+  const API_URL = media 
+                  ? 'https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/partners.json'
+                  : 'https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/sponsors.json'
 
   useEffect(() => {
     // setLoading(true);
 
-    fetch('https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/sponsors.json').then(response => {
+    fetch(API_URL).then(response => {
       if (response.status === 200) {
         return response.json();
       }
@@ -48,22 +51,13 @@ export default function Sponsorship() {
 
   return (
     <article className={styles.sponsors}>
-      <h4>SPONSOR</h4>
-      <div>
-        <div className={styles.sponsorsContainer} style={{ gridTemplateColumns: 'auto '.repeat(gridColumn) }}>
-          {
-            sponsors.map((sponsor: Sponsor) => {
-              return <SponsorItem key={sponsor.name} {...sponsor} />
-            })
-          }
-        </div>
-        <div className={styles.sponsorsContainer} style={{ gridTemplateColumns: 'auto '.repeat(gridColumn) }}>
-          {
-            sponsors.map((sponsor: Sponsor) => {
-              return <SponsorItem key={sponsor.name} {...sponsor} />
-            })
-          }
-        </div>
+      <h4>{media ? 'MEDIA PARTNER' : 'SPONSOR'}</h4>
+      <div className={styles.sponsorsContainer} style={{ gridTemplateColumns: 'auto '.repeat(gridColumn) }}>
+        {
+          sponsors.map((sponsor: Sponsor) => {
+            return <SponsorItem key={sponsor.name} {...sponsor} />
+          })
+        }
       </div>
     </article>
   );

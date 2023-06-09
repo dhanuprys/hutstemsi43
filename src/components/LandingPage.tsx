@@ -133,6 +133,7 @@ export default function LandingPage() {
         </section>
       </article>
       <Sponsorship />
+      <Sponsorship media={true} />
     </main>
   );
 }
