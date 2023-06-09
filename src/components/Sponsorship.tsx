@@ -9,8 +9,10 @@ type Sponsor = {
 function SponsorItem({ banner, name }: Sponsor) {
   return (
     <div className={styles.sponsorItem}>
-      {/* eslint-disable-next-line @next/next/no-img-element */ }
-      <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets/${banner}`} style={{ height: '100%', width: '100%' }} alt={name} />
+      <div style={{ height: '120%', width: '100%' }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */ }
+      <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets/${banner}`} style={{ height: '100%', width: '100%', objectFit: 'contain' }} alt={name} />
+      </div>
     </div>
   );
 }
