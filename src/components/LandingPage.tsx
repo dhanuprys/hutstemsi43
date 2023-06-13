@@ -115,14 +115,14 @@ export default function LandingPage() {
             {
               pamhpletLoading
                 ? 'Loading...'
-                : <Slide prevArrow={<></>} nextArrow={<></>} duration={5000} canSwipe={false}>
+                : <Slide prevArrow={<></>} nextArrow={<></>} duration={4000} canSwipe={false}>
                   {
                     pamhpletDatabase.map((pamphlet: any) => {
                       return (
                         <div key={pamphlet.name} className={styles.slideItem}>
                           {/* <div style={{ 'backgroundImage': `url(https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets${pamphlet.banner})`, 'backgroundSize': 'contain', backgroundPosition: 'center' }}></div> */}
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets${pamphlet.banner}`} alt="hello" style={{ maxHeight: cardHeight + 'px' }} />
+                          <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets${pamphlet.banner}`} alt={pamphlet.name} style={{ maxHeight: cardHeight + 'px' }} />
                         </div>
                       );
                     })
