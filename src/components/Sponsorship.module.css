@@ -46,7 +46,13 @@
 }
 
 @media screen and (max-width: 450px) {
-  .sponsorsContainer {
+  /* .sponsorsContainer {
     grid-template-columns: auto !important;
+  } */
+
+  .sponsorItem {
+    width: 130px;
+    height: 80px;
+    position: relative;
   }
 }
