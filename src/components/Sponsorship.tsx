@@ -18,10 +18,17 @@ function SponsorItem({ sponsor: { banner, name }, premium }: { premium?: boolean
 }
 
 export default function Sponsorship({ media = false }: { media?: boolean }) {
-  const [sponsors, setSponsors] = useState<any>([]);
-  const [sponsors_p, setSponsors_p] = useState<any>([]);
-  const [gridColumn, setGridColumn] = useState(0);
-  const [gridColumn_p, setGridColumn_p] = useState(0);
+  const [sponsors, setSponsors] = useState<any>({
+    regular: {
+      column: 0,
+      data: []
+    },
+    premium: {
+      column: 0,
+      data: []
+    }
+  });
+
   const API_URL = media
     ? 'https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/partners.json'
     : 'https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/sponsors.json'
@@ -36,20 +43,20 @@ export default function Sponsorship({ media = false }: { media?: boolean }) {
 
       throw new Error('Error');
     }).then(sponsorResponse => {
-      setSponsors(sponsorResponse.filter((sponsor: any) => !sponsor.premium));
-      setSponsors_p(sponsorResponse.filter((sponsor: any) => sponsor.premium));
+      if (media) return;
+      const _sponsors = sponsorResponse.filter((sponsor: any) => !sponsor.premium);
+      const _sponsors_p = sponsorResponse.filter((sponsor: any) => sponsor.premium);
 
-      if (sponsors.length >= 5) {
-        setGridColumn(5);
-      } else {
-        setGridColumn(sponsors.length);
-      }
-
-      if (sponsors_p.length >= 5) {
-        setGridColumn_p(5);
-      } else {
-        setGridColumn_p(sponsors_p.length);
-      }
+      setSponsors({
+        regular: {
+          column: _sponsors.length >= 5 ? 5 : _sponsors.length,
+          data: _sponsors,
+        },
+        premium: {
+          column: _sponsors_p.length >= 5 ? 5 : _sponsors_p.length,
+          data: _sponsors_p
+        }
+      });
     }).catch(() => {
 
     }).finally(() => {
@@ -57,24 +64,28 @@ export default function Sponsorship({ media = false }: { media?: boolean }) {
     });
   }, []);
 
+  useEffect(() => {
+    console.log(sponsors);
+  }, [sponsors]);
+
 
   return (
     <article className={styles.sponsors}>
       <h4>{media ? 'MEDIA PARTNER' : 'SPONSOR'}</h4>
       {
         !media
-          ? <div className={styles.sponsorsContainer_P}  style={{ gridTemplateColumns: 'auto '.repeat(gridColumn_p) }}>
+          ? <div className={styles.sponsorsContainer_P} style={{ gridTemplateColumns: 'auto '.repeat(sponsors.premium.column) }}>
             {
-              sponsors_p.map((sponsor: Sponsor) => {
+              sponsors.premium.data.map((sponsor: Sponsor) => {
                 return <SponsorItem key={sponsor.name} sponsor={sponsor} premium={true} />
               })
             }
           </div>
           : null
       }
-      <div className={styles.sponsorsContainer} style={{ gridTemplateColumns: 'auto '.repeat(gridColumn) }}>
+      <div className={styles.sponsorsContainer} style={{ gridTemplateColumns: 'auto '.repeat(sponsors.regular.column) }}>
         {
-          sponsors.map((sponsor: Sponsor) => {
+          sponsors.regular.data.map((sponsor: Sponsor) => {
             return <SponsorItem key={sponsor.name} sponsor={sponsor} />
           })
         }
