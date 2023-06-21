@@ -43,7 +43,6 @@ export default function Sponsorship({ media = false }: { media?: boolean }) {
 
       throw new Error('Error');
     }).then(sponsorResponse => {
-      if (media) return;
       const _sponsors = sponsorResponse.filter((sponsor: any) => !sponsor.premium);
       const _sponsors_p = sponsorResponse.filter((sponsor: any) => sponsor.premium);
 
