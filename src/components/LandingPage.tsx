@@ -94,7 +94,7 @@ export default function LandingPage() {
             <ul className={styles.highlight}>
               <li style={{ background: 'rgba(229, 152, 155, 1)' }}>Profil Pelajar Pancasila</li>
               <li style={{ background: 'rgba(252, 191, 73, 1)' }}>Based Activity</li>
-              <li style={{ background: 'rgba(0, 180, 216, 1)' }}>Enjoy For A New Life</li>
+              <li style={{ background: 'rgba(0, 180, 216, 1)' }}>Enjoy For New Life</li>
             </ul>
             <p className={styles.description}>
               Mari meriahkan HUT STEMSI Ke-43 dengan ikut berpartisipasi dalam setiap rangkaian acaranya.
