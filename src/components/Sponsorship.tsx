@@ -9,7 +9,7 @@ type Sponsor = {
 function SponsorItem({ sponsor: { banner, name }, premium }: { premium?: boolean, sponsor: Sponsor }) {
   return (
     <div className={styles.sponsorItem}>
-      <div style={{ height: premium ? '220%' : '120%', width: '100%' }}>
+      <div style={{ height: premium ? '220%' : '70%', width: '100%' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets/${banner}`} style={{ height: '100%', width: '100%', objectFit: 'contain' }} alt={name} />
       </div>
