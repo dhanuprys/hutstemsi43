@@ -6,10 +6,11 @@ type Sponsor = {
   name: string
 }
 
-function SponsorItem({ sponsor: { banner, name }, premium }: { premium?: boolean, sponsor: Sponsor }) {
+function SponsorItem({ sponsor: { banner, name }, media = false, premium = false }: { premium?: boolean, media: boolean, sponsor: Sponsor }) {
+  console.log({ media, premium })
   return (
     <div className={styles.sponsorItem}>
-      <div style={{ height: premium ? '220%' : '70%', width: '100%' }}>
+      <div style={{ height: premium === true ? '220%' : media === true ? '120%' : '70%', width: '100%' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={`https://raw.githubusercontent.com/dhanuprys/hutstemsi43-metadata/main/assets/${banner}`} style={{ height: '100%', width: '100%', objectFit: 'contain' }} alt={name} />
       </div>
@@ -63,10 +64,6 @@ export default function Sponsorship({ media = false }: { media?: boolean }) {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(sponsors);
-  }, [sponsors]);
-
 
   return (
     <article className={styles.sponsors}>
@@ -76,7 +73,7 @@ export default function Sponsorship({ media = false }: { media?: boolean }) {
           ? <div className={styles.sponsorsContainer_P} style={{ gridTemplateColumns: 'auto '.repeat(sponsors.premium.column) }}>
             {
               sponsors.premium.data.map((sponsor: Sponsor) => {
-                return <SponsorItem key={sponsor.name} sponsor={sponsor} premium={true} />
+                return <SponsorItem key={sponsor.name} media={media} sponsor={sponsor} premium={true} />
               })
             }
           </div>
@@ -85,7 +82,7 @@ export default function Sponsorship({ media = false }: { media?: boolean }) {
       <div className={styles.sponsorsContainer} style={{ gridTemplateColumns: 'auto '.repeat(sponsors.regular.column) }}>
         {
           sponsors.regular.data.map((sponsor: Sponsor) => {
-            return <SponsorItem key={sponsor.name} sponsor={sponsor} />
+            return <SponsorItem key={sponsor.name} media={media} sponsor={sponsor} />
           })
         }
       </div>
