@@ -101,6 +101,7 @@ export default function TermsAndCondition() {
     <main>
       <article className={styles.tac}>
         <h1>Syarat & Ketentuan Lomba</h1>
+        <p style={{ color: 'grey' }}>Klik pada salah satu dropdown dibawah untuk membuka syarat dan ketentuan</p>
         <div className={styles.divider}>
           <div className={styles.cardContainer}>
           {
